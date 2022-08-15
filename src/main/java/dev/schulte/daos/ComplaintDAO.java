@@ -12,6 +12,4 @@ public interface ComplaintDAO {
 
     Complaint updateComplaint(Complaint complaint);
 
-    Complaint updateComplaintMeeting(Complaint complaint);
-
 }
