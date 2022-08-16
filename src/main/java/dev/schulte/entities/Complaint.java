@@ -1,14 +1,10 @@
 package dev.schulte.entities;
 
-import java.util.Objects;
-
 public class Complaint {
 
     private int complaintId;
 
-    private String category;
-
-    private String description;
+    private String complaintDesc;
 
     private Status status;
 
@@ -18,10 +14,9 @@ public class Complaint {
 
     }
 
-    public Complaint(int complaintId, String category, String description, Status status, int meetingId) {
+    public Complaint(int complaintId, String complaintDesc, Status status, int meetingId) {
         this.complaintId = complaintId;
-        this.category = category;
-        this.description = description;
+        this.complaintDesc = complaintDesc;
         this.status = status;
         this.meetingId = meetingId;
     }
@@ -34,20 +29,12 @@ public class Complaint {
         this.complaintId = complaintId;
     }
 
-    public String getCategory() {
-        return category;
+    public String getComplaintDesc() {
+        return complaintDesc;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setComplaintDesc(String complaintDesc) {
+        this.complaintDesc = complaintDesc;
     }
 
     public Status getStatus() {
@@ -66,16 +53,4 @@ public class Complaint {
         this.meetingId = meetingId;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Complaint complaint = (Complaint) o;
-        return complaintId == complaint.complaintId && meetingId == complaint.meetingId && category.equals(complaint.category) && description.equals(complaint.description) && status == complaint.status;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(complaintId, category, description, status, meetingId);
-    }
 }
