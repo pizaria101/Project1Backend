@@ -21,7 +21,7 @@ public class ComplaintDaoTests {
         try(Connection conn = ConnectionUtil.createConnection()){
             String sql = "create table complaint(\n" +
                     "complaint_id serial primary key,\n" +
-                    "description varchar(130),\n" +
+                    "description varchar(200),\n" +
                     "status varchar(30) default 'UNREVIEWED',\n" +
                     "meeting_id int references meeting(meeting_id) default -1\n" +
                     ");\n";
