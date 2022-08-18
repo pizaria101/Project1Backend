@@ -1,12 +1,12 @@
-package dev.schulte.daos;
+package dev.schulte.daos.complaint;
 
+import dev.schulte.daos.complaint.ComplaintDAO;
 import dev.schulte.entities.Complaint;
-import dev.schulte.entities.Status;
 import dev.schulte.util.ConnectionUtil;
 
 import java.sql.*;
 
-public class ComplaintDaoPostgres implements ComplaintDAO{
+public class ComplaintDaoPostgres implements ComplaintDAO {
     @Override
     public Complaint createComplaint(Complaint complaint) {
         try (Connection conn = ConnectionUtil.createConnection()){

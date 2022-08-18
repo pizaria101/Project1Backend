@@ -1,15 +1,22 @@
 package dev.schulte.app;
 
-import dev.schulte.daos.ComplaintDaoPostgres;
+import dev.schulte.daos.complaint.ComplaintDaoPostgres;
+import dev.schulte.daos.meeting.MeetingDaoPostgres;
 import dev.schulte.handlers.ComplaintHandler;
-import dev.schulte.services.ComplaintService;
-import dev.schulte.services.ComplaintServiceImpl;
+import dev.schulte.handlers.MeetingHandler;
+import dev.schulte.services.complaint.ComplaintService;
+import dev.schulte.services.complaint.ComplaintServiceImpl;
+import dev.schulte.services.meeting.MeetingService;
+import dev.schulte.services.meeting.MeetingServiceImpl;
 import io.javalin.Javalin;
 
 public class App {
 
     public static ComplaintService complaintService = new ComplaintServiceImpl(new ComplaintDaoPostgres());
     public static ComplaintHandler complaintHandler = new ComplaintHandler(complaintService);
+
+    public static MeetingService meetingService = new MeetingServiceImpl(new MeetingDaoPostgres());
+    public static MeetingHandler meetingHandler = new MeetingHandler(meetingService);
 
     public static void main(String[] args) {
         Javalin app = Javalin.create(config->{
@@ -18,6 +25,7 @@ public class App {
         });
 
         app.post("/complaints", complaintHandler.reportComplaint);
+        app.get("/meetings", meetingHandler.getAllMeetings);
 
         app.start();
 

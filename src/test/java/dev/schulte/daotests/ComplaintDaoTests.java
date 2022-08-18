@@ -1,7 +1,7 @@
 package dev.schulte.daotests;
 
-import dev.schulte.daos.ComplaintDAO;
-import dev.schulte.daos.ComplaintDaoPostgres;
+import dev.schulte.daos.complaint.ComplaintDAO;
+import dev.schulte.daos.complaint.ComplaintDaoPostgres;
 import dev.schulte.entities.Complaint;
 import dev.schulte.entities.Status;
 import dev.schulte.util.ConnectionUtil;

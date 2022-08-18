@@ -2,7 +2,7 @@ package dev.schulte.handlers;
 
 import com.google.gson.Gson;
 import dev.schulte.entities.Complaint;
-import dev.schulte.services.ComplaintService;
+import dev.schulte.services.complaint.ComplaintService;
 import io.javalin.http.Handler;
 
 public class ComplaintHandler {

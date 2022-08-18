@@ -1,4 +1,4 @@
-package dev.schulte.daos;
+package dev.schulte.daos.complaint;
 
 import dev.schulte.entities.Complaint;
 

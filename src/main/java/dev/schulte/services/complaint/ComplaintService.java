@@ -1,4 +1,4 @@
-package dev.schulte.services;
+package dev.schulte.services.complaint;
 
 import dev.schulte.entities.Complaint;
 

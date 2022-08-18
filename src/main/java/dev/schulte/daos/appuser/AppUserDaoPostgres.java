@@ -1,4 +1,4 @@
-package dev.schulte.daos;
+package dev.schulte.daos.appuser;
 
 public class AppUserDaoPostgres {
 }

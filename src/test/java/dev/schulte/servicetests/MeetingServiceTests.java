@@ -1,4 +1,4 @@
 package dev.schulte.servicetests;
 
-public class MeetingServiceImpl {
+public class MeetingServiceTests {
 }
