@@ -10,6 +10,7 @@ import org.junit.jupiter.api.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ComplaintDaoTests {
@@ -40,6 +41,13 @@ public class ComplaintDaoTests {
         Complaint complaint = new Complaint(0,"Too many hollows", Status.UNREVIEWED,-1);
         Complaint savedComplaint = complaintDAO.createComplaint(complaint);
         Assertions.assertNotEquals(0, savedComplaint.getComplaintId());
+    }
+
+    @Test
+    @Order(2)
+    void get_all_complaints_test(){
+        List<Complaint> complaints = complaintDAO.getAllComplaints();
+        Assertions.assertTrue(complaints.size() > 0);
     }
 
     @AfterAll

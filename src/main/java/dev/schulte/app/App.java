@@ -26,6 +26,7 @@ public class App {
 
         app.post("/complaints", complaintHandler.reportComplaint);
         app.get("/meetings", meetingHandler.getAllMeetings);
+        app.get("/complaints", complaintHandler.getAllComplaints);
 
         app.start();
 

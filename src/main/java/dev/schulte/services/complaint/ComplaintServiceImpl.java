@@ -4,6 +4,8 @@ import dev.schulte.daos.complaint.ComplaintDAO;
 import dev.schulte.entities.Complaint;
 import dev.schulte.services.complaint.ComplaintService;
 
+import java.util.List;
+
 public class ComplaintServiceImpl implements ComplaintService {
 
     private ComplaintDAO complaintDAO;
@@ -16,5 +18,10 @@ public class ComplaintServiceImpl implements ComplaintService {
 
         Complaint savedComplaint = this.complaintDAO.createComplaint(complaint);
         return savedComplaint;
+    }
+
+    @Override
+    public List<Complaint> getAllComplaints() {
+        return this.complaintDAO.getAllComplaints();
     }
 }
