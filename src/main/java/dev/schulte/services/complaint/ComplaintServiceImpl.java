@@ -2,6 +2,7 @@ package dev.schulte.services.complaint;
 
 import dev.schulte.daos.complaint.ComplaintDAO;
 import dev.schulte.entities.Complaint;
+import dev.schulte.entities.Status;
 import dev.schulte.services.complaint.ComplaintService;
 
 import java.util.List;
@@ -23,5 +24,18 @@ public class ComplaintServiceImpl implements ComplaintService {
     @Override
     public List<Complaint> getAllComplaints() {
         return this.complaintDAO.getAllComplaints();
+    }
+
+    @Override
+    public Complaint getComplaintById(int complaintId) {
+        return this.complaintDAO.getComplaintById(complaintId);
+    }
+
+    @Override
+    public Complaint updateComplaintStatus(int complaintId, Status status) {
+        Complaint complaint = this.complaintDAO.getComplaintById(complaintId);
+        complaint.setStatus(status);
+        this.complaintDAO.updateComplaintStatus(complaint.getComplaintId(), status);
+        return complaint;
     }
 }

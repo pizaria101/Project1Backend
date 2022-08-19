@@ -11,4 +11,8 @@ public interface ComplaintDAO {
 
     List<Complaint> getAllComplaints();
 
+    Complaint getComplaintById(int complaintId);
+
+    Complaint updateComplaintStatus(int complaintId, Status status);
+
 }

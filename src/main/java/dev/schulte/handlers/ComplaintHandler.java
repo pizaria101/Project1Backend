@@ -3,6 +3,7 @@ package dev.schulte.handlers;
 import com.google.gson.Gson;
 import dev.schulte.app.App;
 import dev.schulte.entities.Complaint;
+import dev.schulte.entities.Status;
 import dev.schulte.services.complaint.ComplaintService;
 import io.javalin.http.Handler;
 
@@ -28,6 +29,42 @@ public class ComplaintHandler {
     public Handler getAllComplaints = (ctx) -> {
         List<Complaint> complaints = App.complaintService.getAllComplaints();
         String complaintJSON = gson.toJson(complaints);
+        ctx.result(complaintJSON);
+    };
+
+    public Handler updateComplaintStatus = (ctx) -> {
+        int complaintId = Integer.parseInt(ctx.pathParam("complaintId"));
+        Complaint getComplaint = App.complaintService.getComplaintById(complaintId);
+        String newStatus = ctx.pathParam("status");
+        newStatus.toLowerCase();
+
+        switch(newStatus){
+
+            case "addressed":
+                getComplaint = App.complaintService.updateComplaintStatus(complaintId, Status.ADDRESSED);
+                break;
+
+            case "high":
+                getComplaint = App.complaintService.updateComplaintStatus(complaintId, Status.HIGH_PRIORITY);
+                break;
+
+            case "low":
+                getComplaint = App.complaintService.updateComplaintStatus(complaintId, Status.LOW_PRIORITY);
+                break;
+
+            case "ignore":
+                getComplaint = App.complaintService.updateComplaintStatus(complaintId, Status.IGNORED);
+                break;
+
+            default:
+                ctx.status(400);
+                ctx.result("Status change failed");
+                return;
+        }
+
+        ctx.status(202);
+        String complaintJSON = gson.toJson(getComplaint);
+
         ctx.result(complaintJSON);
     };
 }
