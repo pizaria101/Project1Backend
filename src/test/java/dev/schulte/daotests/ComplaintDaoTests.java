@@ -15,12 +15,12 @@ import java.util.List;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ComplaintDaoTests {
 
-    static ComplaintDAO complaintDAO = new ComplaintDaoPostgres();
+    static ComplaintDAO complaintDAO = new ComplaintDaoPostgres("test_complaint");
 
     @BeforeAll
     static void setup(){
         try(Connection conn = ConnectionUtil.createConnection()){
-            String sql = "create table complaint(\n" +
+            String sql = "create table test_complaint(\n" +
                     "complaint_id serial primary key,\n" +
                     "description varchar(200),\n" +
                     "status varchar(30) default 'UNREVIEWED',\n" +
@@ -50,11 +50,26 @@ public class ComplaintDaoTests {
         Assertions.assertTrue(complaints.size() > 0);
     }
 
+    @Test
+    @Order(3)
+    void get_complaint_by_id_test(){
+        Complaint complaint = complaintDAO.getComplaintById(1);
+        Assertions.assertEquals("Too many hollows", complaint.getComplaintDesc());
+    }
+
+    @Test
+    @Order(4)
+    void update_complaint_status_test(){
+        complaintDAO.updateComplaintStatus(1, Status.HIGH_PRIORITY);
+        Complaint complaint = complaintDAO.getComplaintById(1);
+        Assertions.assertEquals(Status.HIGH_PRIORITY, complaint.getStatus());
+    }
+
     @AfterAll
     static void teardown(){
 
         try(Connection conn = ConnectionUtil.createConnection()){
-            String sql = "drop table complaint";
+            String sql = "drop table test_complaint";
             Statement statement = conn.createStatement();
             statement.execute(sql);
         }catch (SQLException e){

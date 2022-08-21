@@ -10,10 +10,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComplaintDaoPostgres implements ComplaintDAO {
+
+    String tableName;
+
+    public ComplaintDaoPostgres(String tableName){
+        this.tableName = tableName;
+    }
+
     @Override
     public Complaint createComplaint(Complaint complaint) {
         try (Connection conn = ConnectionUtil.createConnection()){
-            String sql = "insert into complaint values (default, ?, default, default)";
+            String sql = "insert into " + this.tableName + " values (default, ?, default, default)";
             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, complaint.getComplaintDesc());
 
@@ -35,7 +42,7 @@ public class ComplaintDaoPostgres implements ComplaintDAO {
     @Override
     public List<Complaint> getAllComplaints() {
         try(Connection conn = ConnectionUtil.createConnection()){
-            String sql = "select * from complaint";
+            String sql = "select * from " + this.tableName;
             PreparedStatement ps = conn.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
@@ -60,7 +67,7 @@ public class ComplaintDaoPostgres implements ComplaintDAO {
     @Override
     public Complaint getComplaintById(int complaintId) {
         try(Connection conn = ConnectionUtil.createConnection()){
-            String sql = "select * from complaint where complaint_id = ?";
+            String sql = "select * from " + this.tableName + " where complaint_id = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, complaintId);
 
@@ -86,7 +93,7 @@ public class ComplaintDaoPostgres implements ComplaintDAO {
     @Override
     public Complaint updateComplaintStatus(int complaintId, Status status) {
         try(Connection conn = ConnectionUtil.createConnection()){
-            String sql = "update complaint set status = ? where complaint_id = ?";
+            String sql = "update " + this.tableName + " set status = ? where complaint_id = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, status.toString());
             ps.setInt(2, complaintId);

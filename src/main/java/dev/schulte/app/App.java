@@ -12,10 +12,10 @@ import io.javalin.Javalin;
 
 public class App {
 
-    public static ComplaintService complaintService = new ComplaintServiceImpl(new ComplaintDaoPostgres());
+    public static ComplaintService complaintService = new ComplaintServiceImpl(new ComplaintDaoPostgres("complaint"));
     public static ComplaintHandler complaintHandler = new ComplaintHandler(complaintService);
 
-    public static MeetingService meetingService = new MeetingServiceImpl(new MeetingDaoPostgres());
+    public static MeetingService meetingService = new MeetingServiceImpl(new MeetingDaoPostgres("meeting"));
     public static MeetingHandler meetingHandler = new MeetingHandler(meetingService);
 
     public static void main(String[] args) {
