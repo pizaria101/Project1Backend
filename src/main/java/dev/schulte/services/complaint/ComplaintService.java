@@ -14,4 +14,6 @@ public interface ComplaintService {
     Complaint getComplaintById(int complaintId);
 
     Complaint updateComplaintStatus(int complaintId, Status status);
+
+    Complaint addComplaintToMeeting(int complaintId, int meetingId);
 }

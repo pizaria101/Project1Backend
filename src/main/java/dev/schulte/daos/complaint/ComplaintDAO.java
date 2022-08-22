@@ -15,4 +15,6 @@ public interface ComplaintDAO {
 
     Complaint updateComplaintStatus(int complaintId, Status status);
 
+    Complaint updateComplaintMeetingId(int complaintId, int meetingId);
+
 }

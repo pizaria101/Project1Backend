@@ -34,9 +34,8 @@ public class ComplaintHandler {
 
     public Handler updateComplaintStatus = (ctx) -> {
         int complaintId = Integer.parseInt(ctx.pathParam("complaintId"));
-        Complaint getComplaint = App.complaintService.getComplaintById(complaintId);
-        String newStatus = ctx.pathParam("status");
-        newStatus.toLowerCase();
+        Complaint getComplaint;
+        String newStatus = ctx.pathParam("status").toLowerCase();
 
         switch(newStatus){
 
@@ -64,6 +63,17 @@ public class ComplaintHandler {
 
         ctx.status(202);
         String complaintJSON = gson.toJson(getComplaint);
+
+        ctx.result(complaintJSON);
+    };
+
+    public Handler addComplaintToMeeting = (ctx) -> {
+        int complaintId = Integer.parseInt(ctx.pathParam("complaintId"));
+        int newMeeting = Integer.parseInt(ctx.pathParam("meetingId"));
+        Complaint assignedComplaint = App.complaintService.addComplaintToMeeting(complaintId, newMeeting);
+
+        ctx.status(202);
+        String complaintJSON = gson.toJson(assignedComplaint);
 
         ctx.result(complaintJSON);
     };
