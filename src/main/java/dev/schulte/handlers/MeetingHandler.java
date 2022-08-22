@@ -23,4 +23,12 @@ public class MeetingHandler {
         String meetingJSON = gson.toJson(meetings);
         ctx.result(meetingJSON);
     };
+
+    public Handler createMeeting = (ctx) -> {
+        Meeting meeting = this.gson.fromJson(ctx.body(), Meeting.class);
+        meeting = this.mserv.createMeeting(meeting);
+        String meetingJSON = gson.toJson(meeting);
+        ctx.status(201);
+        ctx.result(meetingJSON);
+    };
 }

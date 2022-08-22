@@ -16,7 +16,6 @@ public class ComplaintServiceImpl implements ComplaintService {
     }
     @Override
     public Complaint reportComplaint(Complaint complaint) {
-
         Complaint savedComplaint = this.complaintDAO.createComplaint(complaint);
         return savedComplaint;
     }
