@@ -29,7 +29,7 @@ public class App {
         app.get("/complaints", complaintHandler.getAllComplaints);
         app.patch("/complaints/{complaintId}/{status}", complaintHandler.updateComplaintStatus);
         app.post("/meetings", meetingHandler.createMeeting);
-        app.patch("complaints/{complaintId}/{meetingId}", complaintHandler.addComplaintToMeeting);
+        app.patch("complaints/{complaintId}/meetings/{meetingId}", complaintHandler.addComplaintToMeeting);
 
         app.start();
 

@@ -35,7 +35,7 @@ public class ComplaintHandler {
     public Handler updateComplaintStatus = (ctx) -> {
         int complaintId = Integer.parseInt(ctx.pathParam("complaintId"));
         Complaint getComplaint;
-        String newStatus = ctx.pathParam("status").toLowerCase();
+        String newStatus = ctx.pathParam("status");
 
         switch(newStatus){
 
