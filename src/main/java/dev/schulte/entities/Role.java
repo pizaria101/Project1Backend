@@ -1,5 +1,5 @@
 package dev.schulte.entities;
 
 public enum Role {
-    CONSTITUENT, COUNCIL_MEMBER
+    UNREGISTERED, REGISTERED, COUNCIL_MEMBER
 }
