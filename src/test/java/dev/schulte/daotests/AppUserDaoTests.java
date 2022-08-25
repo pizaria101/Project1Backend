@@ -42,6 +42,13 @@ public class AppUserDaoTests {
         Assertions.assertEquals("pizaria101", savedUser.getUsername());
     }
 
+    @Test
+    @Order(2)
+    void get_user_by_username_test(){
+        AppUser appUser = appUserDAO.getUserByUsername("pizaria101");
+        Assertions.assertEquals("licish12", appUser.getPassword());
+    }
+
     @AfterAll
     static void teardown(){
 
