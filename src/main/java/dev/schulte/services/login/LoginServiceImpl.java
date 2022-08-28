@@ -15,9 +15,10 @@ public class LoginServiceImpl implements LoginService{
     @Override
     public AppUser validateUser(String username, String password) {
         AppUser appUser = this.appUserDAO.getUserByUsername(username);
+        System.out.println(appUser);
 
         if(appUser == null){
-            throw new NoUserFoundException("No user found with username " + appUser.getUsername());
+            throw new NoUserFoundException("No user found with that username");
         }
 
         if(!appUser.getPassword().equals(password)){

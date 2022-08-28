@@ -8,10 +8,10 @@ import java.sql.Connection;
 
 public class ConnectionTests {
 
-    @Test
-    void connection_available(){
-        Connection connection = ConnectionUtil.createConnection();
-        System.out.println(connection);
-        Assertions.assertNotNull(connection);
-    }
+//    @Test
+//    void connection_available(){
+//        Connection connection = ConnectionUtil.createConnection();
+//        System.out.println(connection);
+//        Assertions.assertNotNull(connection);
+//    }
 }

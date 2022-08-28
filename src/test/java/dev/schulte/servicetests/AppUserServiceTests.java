@@ -14,7 +14,7 @@ import org.mockito.Mockito;
 public class AppUserServiceTests {
 
     @Test
-    void register_user_must_have_username(){
+    void register_user_must_have_username_test(){
         AppUserDAO appUserDAO = Mockito.mock(AppUserDAO.class);
         AppUser appUser = new AppUser(0, "pi", "licish12", Role.UNREGISTERED);
         Mockito.when(appUserDAO.createAppUser(appUser)).thenReturn(appUser);
@@ -26,7 +26,7 @@ public class AppUserServiceTests {
     }
 
     @Test
-    void register_user_must_have_password(){
+    void register_user_must_have_password_test(){
         AppUserDAO appUserDAO = Mockito.mock(AppUserDAO.class);
         AppUser appUser = new AppUser(0, "pizaria101", "li", Role.UNREGISTERED);
         Mockito.when(appUserDAO.createAppUser(appUser)).thenReturn(appUser);
