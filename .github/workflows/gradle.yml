@@ -6,6 +6,8 @@
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
 
 name: Java CI with Gradle
+env:
+  AZURE_SQL_DB: ${{secrets.AZURE_SQL_DB}}
 
 on:
   push:
